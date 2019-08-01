@@ -12,6 +12,8 @@ class APage extends StatefulWidget {
   _APageState createState() => _APageState();
 }
 
+// 3. Add `with RouteAware, RouteObserverMixin` to State
+//    and override RouteAware methods.
 class _APageState extends State<APage> with RouteAware, RouteObserverMixin {
   Logger get _logger => Provider.of<Logger>(context, listen: false);
 
@@ -36,15 +38,21 @@ class _APageState extends State<APage> with RouteAware, RouteObserverMixin {
     );
   }
 
+  /// Called when the top route has been popped off, and the current route
+  /// shows up.
   @override
   void didPopNext() => _logger.log('A: didPopNext');
 
+  /// Called when the current route has been pushed.
   @override
   void didPush() => _logger.log('A: didPush');
 
+  /// Called when the current route has been popped off.
   @override
   void didPop() => _logger.log('A: didPop');
 
+  /// Called when a new route has been pushed, and the current route is no
+  /// longer visible.
   @override
   void didPushNext() => _logger.log('A: didPushNext');
 }
