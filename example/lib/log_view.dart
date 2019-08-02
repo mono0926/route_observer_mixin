@@ -6,29 +6,20 @@ class LogView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final logger = Provider.of<Logger>(context);
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: Material(
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          height: 300,
-          decoration: BoxDecoration(
-            color: Colors.black,
-            border: Border(
-              top: BorderSide(
-                color: Colors.black,
-              ),
-            ),
-          ),
-          child: ListView(
-            children: logger.logs.reversed
-                .map((log) => Text(
-                      log,
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ))
-                .toList(),
-          ),
-        ),
+    return WidgetsApp(
+      debugShowCheckedModeBanner: false,
+      color: Colors.black,
+      builder: (_, __) => ListView(
+        padding: const EdgeInsets.all(8),
+        children: logger.logs.reversed
+            .map((log) => Text(
+                  log,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ))
+            .toList(),
       ),
     );
   }

@@ -42,7 +42,10 @@ class App extends StatelessWidget {
             home: const APage(),
           ),
         ),
-        const LogView(),
+        const SizedBox(
+          height: 300,
+          child: LogView(),
+        ),
       ],
     );
   }
