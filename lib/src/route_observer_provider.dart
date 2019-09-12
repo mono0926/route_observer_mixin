@@ -5,11 +5,10 @@ class RouteObserverProvider extends Provider<RouteObserver<ModalRoute>> {
   RouteObserverProvider({
     Key key,
     Widget child,
-  }) : super.value(
-          value: RouteObserver<ModalRoute>(),
+  }) : super(
+          builder: (context) => RouteObserver<ModalRoute>(),
           key: key,
           child: child,
-          updateShouldNotify: (_, __) => false,
         );
 
   static RouteObserver<ModalRoute> of(BuildContext context) =>
