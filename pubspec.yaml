@@ -1,6 +1,6 @@
 name: route_observer_mixin
 description: RouteObserveMixin provides easy access to didPush/didPop/didPushNext/didPopNext.
-version: 1.0.0
+version: 1.0.1
 author: Masayuki Ono <mono0926@gmail.com>
 homepage: https://github.com/mono0926/route_observer_mixin
 environment:
@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^3.0.0
+  provider: ^3.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
