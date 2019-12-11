@@ -6,7 +6,7 @@ class RouteObserverProvider extends Provider<RouteObserver<ModalRoute>> {
     Key key,
     Widget child,
   }) : super(
-          builder: (context) => RouteObserver<ModalRoute>(),
+          create: (context) => RouteObserver<ModalRoute>(),
           key: key,
           child: child,
         );
