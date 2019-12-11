@@ -1,6 +1,6 @@
 name: route_observer_mixin
 description: RouteObserveMixin provides easy access to didPush/didPop/didPushNext/didPopNext.
-version: 1.0.1
+version: 1.0.2
 author: Masayuki Ono <mono0926@gmail.com>
 homepage: https://github.com/mono0926/route_observer_mixin
 environment:
