@@ -15,7 +15,7 @@ void main() {
       providers: [
         // 1. Wrap MaterialApp with RouteObserverProvider.
         RouteObserverProvider(),
-        ChangeNotifierProvider(builder: (context) => Logger())
+        ChangeNotifierProvider(create: (context) => Logger())
       ],
       child: const App(),
     ),
