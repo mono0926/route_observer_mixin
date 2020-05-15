@@ -6,20 +6,24 @@ class LogView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final logger = Provider.of<Logger>(context);
+    final color = Colors.black;
     return WidgetsApp(
       debugShowCheckedModeBanner: false,
-      color: Colors.black,
-      builder: (_, __) => ListView(
-        padding: const EdgeInsets.all(8),
-        children: logger.logs.reversed
-            .map((log) => Text(
-                  log,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
-                ))
-            .toList(),
+      color: color,
+      builder: (_, __) => ColoredBox(
+        color: color,
+        child: ListView(
+          padding: const EdgeInsets.all(8),
+          children: logger.logs.reversed
+              .map((log) => Text(
+                    log,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ))
+              .toList(),
+        ),
       ),
     );
   }
