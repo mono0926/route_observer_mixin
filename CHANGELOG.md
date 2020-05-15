@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Fix didChangeDependencies
+
 ## 1.1.0
 
 - Update provider to ^4.0.0
