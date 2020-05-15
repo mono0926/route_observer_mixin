@@ -1,3 +1,8 @@
+## 1.2.0
+
+- Add `RouteAwareProvider`, which offers RouteAwareEvent stream
+  - Re-write [BPage example](https://github.com/mono0926/route_observer_mixin/blob/master/example/lib/pages/b_page.dart) by using `RouteAwareProvider`
+
 ## 1.1.1
 
 - Fix didChangeDependencies

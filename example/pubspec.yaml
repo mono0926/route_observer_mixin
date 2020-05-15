@@ -7,8 +7,12 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
+  enum_to_string:
   route_observer_mixin:
     path: ..
+  provider:
+  state_notifier:
+  flutter_state_notifier:
 dev_dependencies:
   flutter_test:
     sdk: flutter

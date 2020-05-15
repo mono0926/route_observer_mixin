@@ -1,18 +1,27 @@
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:route_observer_mixin/route_observer_mixin.dart';
+import 'package:state_notifier/state_notifier.dart';
 
 import '../log_view.dart';
 
-class BPage extends StatefulWidget {
-  const BPage({Key key}) : super(key: key);
+class BPage extends StatelessWidget {
+  const BPage._({Key key}) : super(key: key);
 
-  @override
-  _BPageState createState() => _BPageState();
-}
-
-class _BPageState extends State<BPage> with RouteAware, RouteObserverMixin {
-  Logger get _logger => Provider.of<Logger>(context, listen: false);
+  static Widget wrapped() {
+    return MultiProvider(
+      providers: [
+        // Wrap by RouteAwareProvider
+        const RouteAwareProvider(),
+        StateNotifierProvider<BPageController, BPageState>(
+          create: (context) => BPageController(),
+        )
+      ],
+      child: const BPage._(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +29,59 @@ class _BPageState extends State<BPage> with RouteAware, RouteObserverMixin {
       appBar: AppBar(
         title: const Text('B Page'),
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              context.select(
+                (BPageState s) => 'Last Event: ${EnumToString.parse(s.event)}',
+              ),
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+            const SizedBox(height: 16),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).push<void>(
+                  MaterialPageRoute(
+                    builder: (context) => Scaffold(
+                      appBar: AppBar(),
+                    ),
+                  ),
+                );
+              },
+              child: const Text('NEXT'),
+            ),
+          ],
+        ),
+      ),
     );
   }
+}
+
+class BPageController extends StateNotifier<BPageState> with LocatorMixin {
+  BPageController() : super(const BPageState());
+
+  RouteAwareObserver get _routeAwareObserver => read();
+  Logger get _logger => read();
 
   @override
-  void didPopNext() => _logger.log('B: didPopNext');
+  void initState() {
+    super.initState();
+    // RouteAwareObserver doesn't support `didPush` event,
+    // but `initState` is called at about the same time.
+    _logger.log('B: ${EnumToString.parse(state.event)}');
+    // Listen RouteAwareObserver RouteAwareEvent stream
+    _routeAwareObserver.stream.listen((event) {
+      state = BPageState(event);
+      _logger.log('B: ${EnumToString.parse(state.event)}');
+    });
+  }
+}
 
-  @override
-  void didPush() => _logger.log('B: didPush');
+class BPageState {
+  // `didPush` of [RouteAware] isn't supported, so set by hand initially.
+  const BPageState([this.event = RouteAwareEvent.didPush]);
 
-  @override
-  void didPop() => _logger.log('B: didPop');
-
-  @override
-  void didPushNext() => _logger.log('B: didPushNext');
+  final RouteAwareEvent event;
 }
