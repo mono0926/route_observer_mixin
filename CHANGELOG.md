@@ -1,3 +1,7 @@
+## 1.3.0
+
+- Rename event of GlobalRouteObserver to navigation 
+
 ## 1.2.2
 
 - Add didRemove/didReplace/didStartUserGesture/didStopUserGesture to GlobalRouteEventType

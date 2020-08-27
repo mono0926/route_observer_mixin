@@ -21,15 +21,15 @@ class RouteObserverProvider extends Provider<GlobalRouteObserver> {
 }
 
 class GlobalRouteObserver extends RouteObserver<ModalRoute> {
-  StreamController<GlobalRouteEvent> _event;
+  StreamController<GlobalRouteEvent> _navigation;
 
-  Stream<GlobalRouteEvent> get event =>
-      (_event ??= StreamController.broadcast()).stream;
+  Stream<GlobalRouteEvent> get navigation =>
+      (_navigation ??= StreamController.broadcast()).stream;
 
   @override
   void didPush(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didPush(route, previousRoute);
-    _event?.add(
+    _navigation?.add(
       GlobalRouteEvent(
         type: GlobalRouteEventType.didPush,
         route: route,
@@ -41,7 +41,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   @override
   void didPop(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didPop(route, previousRoute);
-    _event?.add(
+    _navigation?.add(
       GlobalRouteEvent(
         type: GlobalRouteEventType.didPop,
         route: route,
@@ -53,7 +53,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   @override
   void didRemove(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didRemove(route, previousRoute);
-    _event?.add(
+    _navigation?.add(
       GlobalRouteEvent(
         type: GlobalRouteEventType.didRemove,
         route: route,
@@ -65,7 +65,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   @override
   void didReplace({Route<dynamic> newRoute, Route<dynamic> oldRoute}) {
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
-    _event?.add(
+    _navigation?.add(
       GlobalRouteEvent(
         type: GlobalRouteEventType.didReplace,
         route: newRoute,
@@ -77,7 +77,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   @override
   void didStartUserGesture(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didStartUserGesture(route, previousRoute);
-    _event?.add(
+    _navigation?.add(
       GlobalRouteEvent(
         type: GlobalRouteEventType.didStartUserGesture,
         route: route,
@@ -89,7 +89,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   @override
   void didStopUserGesture() {
     super.didStopUserGesture();
-    _event?.add(
+    _navigation?.add(
       GlobalRouteEvent(
         type: GlobalRouteEventType.didStopUserGesture,
         route: null,
