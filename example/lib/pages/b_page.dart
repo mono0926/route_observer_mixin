@@ -45,8 +45,11 @@ class BPage extends StatelessWidget {
                 Navigator.of(context).push<void>(
                   MaterialPageRoute(
                     builder: (context) => Scaffold(
-                      appBar: AppBar(),
+                      appBar: AppBar(
+                        title: const Text('C'),
+                      ),
                     ),
+                    settings: const RouteSettings(name: 'C'),
                   ),
                 );
               },

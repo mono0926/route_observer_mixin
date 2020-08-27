@@ -29,6 +29,7 @@ class _APageState extends State<APage> with RouteAware, RouteObserverMixin {
             Navigator.of(context).push<void>(
               MaterialPageRoute(
                 builder: (context) => BPage.wrapped(),
+                settings: const RouteSettings(name: 'B'),
               ),
             );
           },

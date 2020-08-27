@@ -10,7 +10,9 @@ void main() {
     MultiProvider(
       providers: [
         // 1. Wrap MaterialApp with RouteObserverProvider.
-        RouteObserverProvider(),
+        RouteObserverProvider(
+          create: (context) => GlobalRouteObserver()..event.listen(print),
+        ),
         ChangeNotifierProvider(create: (context) => Logger())
       ],
       child: const App(),

@@ -1,8 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 mixin RouteObserverMixin<T extends StatefulWidget> on State<T>, RouteAware {
-  RouteObserver<ModalRoute> _routeObserver;
+  GlobalRouteObserver _routeObserver;
 
   @override
   void didChangeDependencies() {

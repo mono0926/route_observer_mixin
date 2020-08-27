@@ -1,3 +1,7 @@
+## 1.2.1
+
+- Add GlobalRouteObserver, which extends RouteObserver<ModalRoute> and it exposes didPush/didPop stream.
+
 ## 1.2.0
 
 - Add `RouteAwareProvider`, which offers RouteAwareEvent stream
