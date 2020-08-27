@@ -6,7 +6,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
+  cupertino_icons: ^0.1.3
   enum_to_string:
   route_observer_mixin:
     path: ..

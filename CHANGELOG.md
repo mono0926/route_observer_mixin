@@ -1,3 +1,7 @@
+## 1.4.0
+
+- Rename to NavigationBehavior from GlobalRouteEvent
+
 ## 1.3.0
 
 - Rename event of GlobalRouteObserver to navigation 

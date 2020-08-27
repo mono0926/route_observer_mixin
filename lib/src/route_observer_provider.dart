@@ -21,17 +21,17 @@ class RouteObserverProvider extends Provider<GlobalRouteObserver> {
 }
 
 class GlobalRouteObserver extends RouteObserver<ModalRoute> {
-  StreamController<GlobalRouteEvent> _navigation;
+  StreamController<NavigationBehavior> _navigation;
 
-  Stream<GlobalRouteEvent> get navigation =>
+  Stream<NavigationBehavior> get navigation =>
       (_navigation ??= StreamController.broadcast()).stream;
 
   @override
   void didPush(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didPush(route, previousRoute);
     _navigation?.add(
-      GlobalRouteEvent(
-        type: GlobalRouteEventType.didPush,
+      NavigationBehavior(
+        type: NavigationBehaviorType.didPush,
         route: route,
         previousRoute: previousRoute,
       ),
@@ -42,8 +42,8 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   void didPop(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didPop(route, previousRoute);
     _navigation?.add(
-      GlobalRouteEvent(
-        type: GlobalRouteEventType.didPop,
+      NavigationBehavior(
+        type: NavigationBehaviorType.didPop,
         route: route,
         previousRoute: previousRoute,
       ),
@@ -54,8 +54,8 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   void didRemove(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didRemove(route, previousRoute);
     _navigation?.add(
-      GlobalRouteEvent(
-        type: GlobalRouteEventType.didRemove,
+      NavigationBehavior(
+        type: NavigationBehaviorType.didRemove,
         route: route,
         previousRoute: previousRoute,
       ),
@@ -66,8 +66,8 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   void didReplace({Route<dynamic> newRoute, Route<dynamic> oldRoute}) {
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
     _navigation?.add(
-      GlobalRouteEvent(
-        type: GlobalRouteEventType.didReplace,
+      NavigationBehavior(
+        type: NavigationBehaviorType.didReplace,
         route: newRoute,
         previousRoute: oldRoute,
       ),
@@ -78,8 +78,8 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   void didStartUserGesture(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didStartUserGesture(route, previousRoute);
     _navigation?.add(
-      GlobalRouteEvent(
-        type: GlobalRouteEventType.didStartUserGesture,
+      NavigationBehavior(
+        type: NavigationBehaviorType.didStartUserGesture,
         route: route,
         previousRoute: previousRoute,
       ),
@@ -90,8 +90,8 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   void didStopUserGesture() {
     super.didStopUserGesture();
     _navigation?.add(
-      GlobalRouteEvent(
-        type: GlobalRouteEventType.didStopUserGesture,
+      NavigationBehavior(
+        type: NavigationBehaviorType.didStopUserGesture,
         route: null,
         previousRoute: null,
       ),
@@ -99,7 +99,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   }
 }
 
-enum GlobalRouteEventType {
+enum NavigationBehaviorType {
   didPush,
   didPop,
   didRemove,
@@ -108,13 +108,13 @@ enum GlobalRouteEventType {
   didStopUserGesture,
 }
 
-class GlobalRouteEvent {
-  GlobalRouteEvent({
+class NavigationBehavior {
+  NavigationBehavior({
     @required this.type,
     @required this.route,
     @required this.previousRoute,
   });
-  final GlobalRouteEventType type;
+  final NavigationBehaviorType type;
   final Route<dynamic> route;
   final Route<dynamic> previousRoute;
 
