@@ -1,3 +1,7 @@
+## 1.2.2
+
+- Add didRemove/didReplace/didStartUserGesture/didStopUserGesture to GlobalRouteEventType
+
 ## 1.2.1
 
 - Add GlobalRouteObserver, which extends RouteObserver<ModalRoute> and it exposes didPush/didPop stream.

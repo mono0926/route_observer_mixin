@@ -49,11 +49,63 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
       ),
     );
   }
+
+  @override
+  void didRemove(Route<dynamic> route, Route<dynamic> previousRoute) {
+    super.didRemove(route, previousRoute);
+    _event?.add(
+      GlobalRouteEvent(
+        type: GlobalRouteEventType.didRemove,
+        route: route,
+        previousRoute: previousRoute,
+      ),
+    );
+  }
+
+  @override
+  void didReplace({Route<dynamic> newRoute, Route<dynamic> oldRoute}) {
+    super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
+    _event?.add(
+      GlobalRouteEvent(
+        type: GlobalRouteEventType.didReplace,
+        route: newRoute,
+        previousRoute: oldRoute,
+      ),
+    );
+  }
+
+  @override
+  void didStartUserGesture(Route<dynamic> route, Route<dynamic> previousRoute) {
+    super.didStartUserGesture(route, previousRoute);
+    _event?.add(
+      GlobalRouteEvent(
+        type: GlobalRouteEventType.didStartUserGesture,
+        route: route,
+        previousRoute: previousRoute,
+      ),
+    );
+  }
+
+  @override
+  void didStopUserGesture() {
+    super.didStopUserGesture();
+    _event?.add(
+      GlobalRouteEvent(
+        type: GlobalRouteEventType.didStopUserGesture,
+        route: null,
+        previousRoute: null,
+      ),
+    );
+  }
 }
 
 enum GlobalRouteEventType {
   didPush,
   didPop,
+  didRemove,
+  didReplace,
+  didStartUserGesture,
+  didStopUserGesture,
 }
 
 class GlobalRouteEvent {
