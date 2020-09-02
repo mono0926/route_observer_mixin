@@ -2,7 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:riverpod/riverpod.dart' as riverpod;
 import 'package:rxdart/rxdart.dart';
+
+final routeObserverProvider = riverpod.Provider(
+  (ref) => GlobalRouteObserver(),
+);
 
 class RouteObserverProvider extends Provider<GlobalRouteObserver> {
   RouteObserverProvider({
