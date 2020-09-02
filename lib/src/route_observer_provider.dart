@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:rxdart/rxdart.dart';
 
 class RouteObserverProvider extends Provider<GlobalRouteObserver> {
   RouteObserverProvider({
@@ -21,10 +22,10 @@ class RouteObserverProvider extends Provider<GlobalRouteObserver> {
 }
 
 class GlobalRouteObserver extends RouteObserver<ModalRoute> {
-  StreamController<NavigationBehavior> _navigation;
+  BehaviorSubject<NavigationBehavior> _navigation;
 
-  Stream<NavigationBehavior> get navigation =>
-      (_navigation ??= StreamController.broadcast()).stream;
+  ValueStream<NavigationBehavior> get navigation =>
+      (_navigation ??= BehaviorSubject()).stream;
 
   @override
   void didPush(Route<dynamic> route, Route<dynamic> previousRoute) {

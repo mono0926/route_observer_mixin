@@ -1,3 +1,7 @@
+## 1.4.1
+
+- Change `navigation` of `GlobalRouteObserver` to ValueStream
+
 ## 1.4.0
 
 - Rename to NavigationBehavior from GlobalRouteEvent
