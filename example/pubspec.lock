@@ -63,7 +63,7 @@ packages:
       name: enum_to_string
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.9"
+    version: "1.0.11"
   fake_async:
     dependency: transitive
     description:
@@ -136,21 +136,21 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.3.2+1"
+    version: "4.3.2+2"
   riverpod:
     dependency: transitive
     description:
       name: riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.0"
+    version: "0.10.0"
   route_observer_mixin:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.4.2"
+    version: "1.4.2+1"
   rxdart:
     dependency: transitive
     description:
