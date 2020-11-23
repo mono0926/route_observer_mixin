@@ -41,6 +41,7 @@ class BPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             RaisedButton(
+              child: const Text('NEXT'),
               onPressed: () {
                 Navigator.of(context).push<void>(
                   MaterialPageRoute(
@@ -53,7 +54,14 @@ class BPage extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('NEXT'),
+            ),
+            RaisedButton(
+              child: const Text('LOG LATEST NAVIGATION'),
+              onPressed: () {
+                final route =
+                    RouteObserverProvider.of(context).navigation.value;
+                context.read<Logger>().log('route: $route');
+              },
             ),
           ],
         ),
