@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LogView extends StatelessWidget {
-  const LogView({Key key}) : super(key: key);
+  const LogView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final logger = Provider.of<Logger>(context);
@@ -37,6 +37,6 @@ class Logger extends ChangeNotifier {
   void log(String log) {
     print(log);
     _logs.add(log);
-    WidgetsBinding.instance.addPostFrameCallback((_) => notifyListeners());
+    WidgetsBinding.instance!.addPostFrameCallback((_) => notifyListeners());
   }
 }

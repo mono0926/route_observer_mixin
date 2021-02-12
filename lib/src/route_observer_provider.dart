@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:riverpod/riverpod.dart' as riverpod;
@@ -11,9 +9,9 @@ final routeObserverProvider = riverpod.Provider(
 
 class RouteObserverProvider extends Provider<GlobalRouteObserver> {
   RouteObserverProvider({
-    Key key,
-    Create<GlobalRouteObserver> create,
-    Widget child,
+    Key? key,
+    Create<GlobalRouteObserver>? create,
+    Widget? child,
   }) : super(
           create: create ?? (context) => GlobalRouteObserver(),
           key: key,
@@ -27,13 +25,13 @@ class RouteObserverProvider extends Provider<GlobalRouteObserver> {
 }
 
 class GlobalRouteObserver extends RouteObserver<ModalRoute> {
-  BehaviorSubject<NavigationBehavior> _navigation;
+  BehaviorSubject<NavigationBehavior>? _navigation;
 
   ValueStream<NavigationBehavior> get navigation =>
       (_navigation ??= BehaviorSubject()).stream;
 
   @override
-  void didPush(Route<dynamic> route, Route<dynamic> previousRoute) {
+  void didPush(Route route, Route<dynamic>? previousRoute) {
     super.didPush(route, previousRoute);
     _navigation?.add(
       NavigationBehavior(
@@ -45,7 +43,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   }
 
   @override
-  void didPop(Route<dynamic> route, Route<dynamic> previousRoute) {
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
     super.didPop(route, previousRoute);
     _navigation?.add(
       NavigationBehavior(
@@ -57,7 +55,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   }
 
   @override
-  void didRemove(Route<dynamic> route, Route<dynamic> previousRoute) {
+  void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {
     super.didRemove(route, previousRoute);
     _navigation?.add(
       NavigationBehavior(
@@ -69,7 +67,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   }
 
   @override
-  void didReplace({Route<dynamic> newRoute, Route<dynamic> oldRoute}) {
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
     _navigation?.add(
       NavigationBehavior(
@@ -81,7 +79,10 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute> {
   }
 
   @override
-  void didStartUserGesture(Route<dynamic> route, Route<dynamic> previousRoute) {
+  void didStartUserGesture(
+    Route<dynamic> route,
+    Route<dynamic>? previousRoute,
+  ) {
     super.didStartUserGesture(route, previousRoute);
     _navigation?.add(
       NavigationBehavior(
@@ -116,13 +117,13 @@ enum NavigationBehaviorType {
 
 class NavigationBehavior {
   NavigationBehavior({
-    @required this.type,
+    required this.type,
     @required this.route,
     @required this.previousRoute,
   });
   final NavigationBehaviorType type;
-  final Route<dynamic> route;
-  final Route<dynamic> previousRoute;
+  final Route<dynamic>? route;
+  final Route<dynamic>? previousRoute;
 
   @override
   String toString() {

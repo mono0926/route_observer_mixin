@@ -8,15 +8,15 @@ import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 class RouteAwareProvider extends SingleChildStatelessWidget {
   const RouteAwareProvider({
-    Key key,
-    Widget child,
+    Key? key,
+    Widget? child,
   }) : super(
           key: key,
           child: child,
         );
 
   @override
-  Widget buildWithChild(BuildContext context, Widget child) {
+  Widget buildWithChild(BuildContext context, Widget? child) {
     return _RouteAwareWidget(
       child: child,
     );
@@ -42,8 +42,8 @@ class RouteAwareProvider extends SingleChildStatelessWidget {
 
 class _RouteAwareWidget extends SingleChildStatefulWidget {
   const _RouteAwareWidget({
-    Key key,
-    Widget child,
+    Key? key,
+    Widget? child,
   }) : super(
           key: key,
           child: child,
@@ -57,7 +57,7 @@ class _RouteAwareWidgetState extends SingleChildState<_RouteAwareWidget>
   final _observer = RouteAwareObserver();
 
   @override
-  Widget buildWithChild(BuildContext context, Widget child) {
+  Widget buildWithChild(BuildContext context, Widget? child) {
     return Provider.value(
       value: _observer,
       child: child,

@@ -1,3 +1,7 @@
+## 1.5.0
+
+- Migrate to null safety
+
 ## 1.4.2
 
 - Add routeObserverProvider for Riverpod

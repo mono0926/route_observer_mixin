@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 mixin RouteObserverMixin<T extends StatefulWidget> on State<T>, RouteAware {
-  GlobalRouteObserver _routeObserver;
+  late GlobalRouteObserver _routeObserver;
 
   @override
   void didChangeDependencies() {
@@ -12,7 +12,7 @@ mixin RouteObserverMixin<T extends StatefulWidget> on State<T>, RouteAware {
     _routeObserver = Provider.of(context, listen: false)
       ..subscribe(
         this,
-        ModalRoute.of(context),
+        ModalRoute.of(context)!,
       );
   }
 

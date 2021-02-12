@@ -8,7 +8,7 @@ import 'package:state_notifier/state_notifier.dart';
 import '../log_view.dart';
 
 class BPage extends StatelessWidget {
-  const BPage._({Key key}) : super(key: key);
+  const BPage._({Key? key}) : super(key: key);
 
   static Widget wrapped() {
     return MultiProvider(
@@ -35,12 +35,13 @@ class BPage extends StatelessWidget {
           children: [
             Text(
               context.select(
-                (BPageState s) => 'Last Event: ${EnumToString.parse(s.event)}',
+                (BPageState s) =>
+                    'Last Event: ${EnumToString.convertToString(s.event)}',
               ),
               style: Theme.of(context).textTheme.subtitle1,
             ),
             const SizedBox(height: 16),
-            RaisedButton(
+            ElevatedButton(
               child: const Text('NEXT'),
               onPressed: () {
                 Navigator.of(context).push<void>(
@@ -55,11 +56,13 @@ class BPage extends StatelessWidget {
                 );
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: const Text('LOG LATEST NAVIGATION'),
               onPressed: () {
-                final route =
-                    RouteObserverProvider.of(context).navigation.value;
+                final route = RouteObserverProvider.of(context)
+                    .navigation
+                    .valueWrapper
+                    ?.value;
                 context.read<Logger>().log('route: $route');
               },
             ),
@@ -81,11 +84,11 @@ class BPageController extends StateNotifier<BPageState> with LocatorMixin {
     super.initState();
     // RouteAwareObserver doesn't support `didPush` event,
     // but `initState` is called at about the same time.
-    _logger.log('B: ${EnumToString.parse(state.event)}');
+    _logger.log('B: ${EnumToString.convertToString(state.event)}');
     // Listen RouteAwareObserver RouteAwareEvent stream
     _routeAwareObserver.stream.listen((event) {
       state = BPageState(event);
-      _logger.log('B: ${EnumToString.parse(state.event)}');
+      _logger.log('B: ${EnumToString.convertToString(state.event)}');
     });
   }
 }

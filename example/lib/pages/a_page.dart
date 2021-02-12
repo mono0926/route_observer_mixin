@@ -6,7 +6,7 @@ import '../log_view.dart';
 import 'b_page.dart';
 
 class APage extends StatefulWidget {
-  const APage({Key key}) : super(key: key);
+  const APage({Key? key}) : super(key: key);
 
   @override
   _APageState createState() => _APageState();
@@ -24,7 +24,7 @@ class _APageState extends State<APage> with RouteAware, RouteObserverMixin {
         title: const Text('A Page'),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             Navigator.of(context).push<void>(
               MaterialPageRoute(

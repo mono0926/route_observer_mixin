@@ -2,19 +2,21 @@ name: example
 description: An example app.
 version: 1.0.0+1
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 dependencies:
+  cupertino_icons:
+  enum_to_string:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.3
-  enum_to_string:
+  flutter_state_notifier:
+  provider:
   route_observer_mixin:
     path: ..
-  provider:
   state_notifier:
-  flutter_state_notifier:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+dependency_overrides:
+  provider: '>=5.0.0-0'
 flutter:
   uses-material-design: true
