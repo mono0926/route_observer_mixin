@@ -59,10 +59,8 @@ class BPage extends StatelessWidget {
             ElevatedButton(
               child: const Text('LOG LATEST NAVIGATION'),
               onPressed: () {
-                final route = RouteObserverProvider.of(context)
-                    .navigation
-                    .valueWrapper
-                    ?.value;
+                final route =
+                    RouteObserverProvider.of(context).navigation.valueOrNull;
                 context.read<Logger>().log('route: $route');
               },
             ),

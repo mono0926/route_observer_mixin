@@ -1,8 +1,9 @@
 name: example
 description: An example app.
 version: 1.0.0+1
+publish_to: none
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 dependencies:
   cupertino_icons:
   enum_to_string:
@@ -16,7 +17,5 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-dependency_overrides:
-  provider: '>=5.0.0-0'
 flutter:
   uses-material-design: true

@@ -1,3 +1,7 @@
+## 1.6.0-dev
+
+- Update hooks_riverpod to v1
+
 ## 1.5.0
 
 - Migrate to null safety
