@@ -2,6 +2,10 @@
 
 - Update hooks_riverpod to v1
 
+## 1.5.1
+
+- Upgrade Provider
+
 ## 1.5.0
 
 - Migrate to null safety
@@ -20,7 +24,7 @@
 
 ## 1.3.0
 
-- Rename event of GlobalRouteObserver to navigation 
+- Rename event of GlobalRouteObserver to navigation
 
 ## 1.2.2
 
