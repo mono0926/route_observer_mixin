@@ -1,3 +1,7 @@
+## 1.6.0-dev+1
+
+- Update Provider
+
 ## 1.6.0-dev
 
 - Update hooks_riverpod to v1
