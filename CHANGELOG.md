@@ -1,3 +1,7 @@
+## 1.6.0
+
+- Stable release
+
 ## 1.6.0-dev+1
 
 - Update Provider
