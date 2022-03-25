@@ -1,3 +1,7 @@
+## 1.7.0-dev.0
+
+- Use riverpod '>=2.0.0-0 <3.0.0'
+
 ## 1.6.0
 
 - Stable release
