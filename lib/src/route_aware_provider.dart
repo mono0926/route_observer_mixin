@@ -8,12 +8,9 @@ import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 class RouteAwareProvider extends SingleChildStatelessWidget {
   const RouteAwareProvider({
-    Key? key,
-    Widget? child,
-  }) : super(
-          key: key,
-          child: child,
-        );
+    super.key,
+    super.child,
+  });
 
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
@@ -42,12 +39,8 @@ class RouteAwareProvider extends SingleChildStatelessWidget {
 
 class _RouteAwareWidget extends SingleChildStatefulWidget {
   const _RouteAwareWidget({
-    Key? key,
-    Widget? child,
-  }) : super(
-          key: key,
-          child: child,
-        );
+    super.child,
+  });
   @override
   _RouteAwareWidgetState createState() => _RouteAwareWidgetState();
 }

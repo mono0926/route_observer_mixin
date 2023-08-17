@@ -9,7 +9,7 @@ class APage extends StatefulWidget {
   const APage({Key? key}) : super(key: key);
 
   @override
-  _APageState createState() => _APageState();
+  State<APage> createState() => _APageState();
 }
 
 // 3. Add `with RouteAware, RouteObserverMixin` to State

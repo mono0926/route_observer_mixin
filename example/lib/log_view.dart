@@ -6,7 +6,7 @@ class LogView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final logger = Provider.of<Logger>(context);
-    final color = Colors.black;
+    const color = Colors.black;
     return WidgetsApp(
       debugShowCheckedModeBanner: false,
       color: color,
@@ -35,8 +35,9 @@ class Logger extends ChangeNotifier {
   List<String> get logs => _logs;
 
   void log(String log) {
+    // ignore: avoid_print
     print(log);
     _logs.add(log);
-    WidgetsBinding.instance!.addPostFrameCallback((_) => notifyListeners());
+    WidgetsBinding.instance.addPostFrameCallback((_) => notifyListeners());
   }
 }

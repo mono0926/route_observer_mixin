@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:route_observer_mixin/route_observer_mixin.dart';
-import 'package:state_notifier/state_notifier.dart';
 
 import '../log_view.dart';
 
@@ -38,7 +37,7 @@ class BPage extends StatelessWidget {
                 (BPageState s) =>
                     'Last Event: ${EnumToString.convertToString(s.event)}',
               ),
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 16),
             ElevatedButton(

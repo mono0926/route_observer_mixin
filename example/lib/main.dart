@@ -11,6 +11,7 @@ void main() {
       providers: [
         // 1. Wrap MaterialApp with RouteObserverProvider.
         RouteObserverProvider(
+          // ignore: avoid_print
           create: (context) => GlobalRouteObserver()..navigation.listen(print),
         ),
         ChangeNotifierProvider(create: (context) => Logger())

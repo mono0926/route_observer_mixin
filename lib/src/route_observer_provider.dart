@@ -9,13 +9,11 @@ final routeObserverProvider = riverpod.Provider(
 
 class RouteObserverProvider extends Provider<GlobalRouteObserver> {
   RouteObserverProvider({
-    Key? key,
+    super.key,
     Create<GlobalRouteObserver>? create,
-    Widget? child,
+    super.child,
   }) : super(
           create: create ?? (context) => GlobalRouteObserver(),
-          key: key,
-          child: child,
         );
 
   static GlobalRouteObserver of(BuildContext context) => Provider.of(
@@ -24,14 +22,14 @@ class RouteObserverProvider extends Provider<GlobalRouteObserver> {
       );
 }
 
-class GlobalRouteObserver extends RouteObserver<ModalRoute> {
+class GlobalRouteObserver extends RouteObserver<ModalRoute<dynamic>> {
   BehaviorSubject<NavigationBehavior>? _navigation;
 
   ValueStream<NavigationBehavior> get navigation =>
       (_navigation ??= BehaviorSubject()).stream;
 
   @override
-  void didPush(Route route, Route<dynamic>? previousRoute) {
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     super.didPush(route, previousRoute);
     _navigation?.add(
       NavigationBehavior(

@@ -9,6 +9,7 @@ dependencies:
   enum_to_string:
   flutter:
     sdk: flutter
+  flutter_riverpod: 2.3.0
   flutter_state_notifier:
   provider:
   route_observer_mixin:
@@ -19,5 +20,6 @@ dependencies_override:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic_mono:
 flutter:
   uses-material-design: true
