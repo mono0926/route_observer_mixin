@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:riverpod/riverpod.dart' as riverpod;
 import 'package:rxdart/rxdart.dart';
 
-final routeObserverProvider = riverpod.Provider(
+final routeObserverProvider = riverpod.Provider<GlobalRouteObserver>(
   (ref) => GlobalRouteObserver(),
 );
 

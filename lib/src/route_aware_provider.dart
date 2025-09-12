@@ -23,7 +23,6 @@ class RouteAwareProvider extends SingleChildStatelessWidget {
   static RouteAwareObserver of(BuildContext context) {
     try {
       return Provider.of<RouteAwareObserver>(context, listen: false);
-      // ignore: avoid_catches_without_on_clauses
     } catch (error) {
       throw FlutterError(
         '''
