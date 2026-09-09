@@ -4,3 +4,4 @@ analyzer:
   exclude:
     - lib/l10n/messages_*.dart
     - ios/**
+    - build/**
