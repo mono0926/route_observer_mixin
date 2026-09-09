@@ -116,8 +116,8 @@ enum NavigationBehaviorType {
 class NavigationBehavior {
   NavigationBehavior({
     required this.type,
-    @required this.route,
-    @required this.previousRoute,
+    required this.route,
+    required this.previousRoute,
   });
   final NavigationBehaviorType type;
   final Route<dynamic>? route;
