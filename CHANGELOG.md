@@ -1,3 +1,8 @@
+## 1.8.1
+
+- Add AI Agent Skill (`route_observer_mixin-route-awareness`)
+- Replace deprecated `@required` with language keyword `required`
+
 ## 1.8.0
 
 - Use riverpod ^3.0.0
