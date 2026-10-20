@@ -1,3 +1,9 @@
+## 1.8.2 - 2026-10-20
+
+### Bug Fixes
+- Safely unsubscribe previous `GlobalRouteObserver` before re-subscribing in `didChangeDependencies` and guard against null `ModalRoute`
+- Fix `RouteAwareProvider.of` error message
+
 ## 1.8.1
 
 - Add AI Agent Skill (`route_observer_mixin-route-awareness`)
