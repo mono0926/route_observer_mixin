@@ -26,8 +26,8 @@ class RouteAwareProvider extends SingleChildStatelessWidget {
     } catch (error) {
       throw FlutterError(
         '''
-        TickerProvider.of() called with a context that does not contain
-        a Disposable of type TickerProvider.
+        RouteAwareProvider.of() called with a context that does not contain
+        a Disposable of type RouteAwareObserver.
         The context used was: $context
         Error: $error
         ''',
