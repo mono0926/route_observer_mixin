@@ -1,3 +1,8 @@
+## 1.9.1 - 2026-11-12
+
+### Bug Fixes
+- Fix formatting so that pub.dev static analysis passes (pana 160/160)
+
 ## 1.9.0 - 2026-11-12
 
 ### Features

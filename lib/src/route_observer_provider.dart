@@ -12,15 +12,10 @@ class RouteObserverProvider({
   Create<GlobalRouteObserver>? create,
   super.child,
 }) extends Provider<GlobalRouteObserver> {
-  this
-    : super(
-        create: create ?? (context) => GlobalRouteObserver(),
-      );
+  this : super(create: create ?? (context) => GlobalRouteObserver());
 
-  static GlobalRouteObserver of(BuildContext context) => Provider.of(
-    context,
-    listen: false,
-  );
+  static GlobalRouteObserver of(BuildContext context) =>
+      Provider.of(context, listen: false);
 }
 
 class GlobalRouteObserver() extends RouteObserver<ModalRoute<dynamic>> {
