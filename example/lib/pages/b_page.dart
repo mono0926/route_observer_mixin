@@ -1,14 +1,12 @@
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 import '../log_view.dart';
 
-class BPage extends StatelessWidget {
-  const BPage._({Key? key}) : super(key: key);
-
+class const BPage._() extends StatelessWidget {
   static Widget wrapped() {
     return MultiProvider(
       providers: [
@@ -16,7 +14,7 @@ class BPage extends StatelessWidget {
         const RouteAwareProvider(),
         StateNotifierProvider<BPageController, BPageState>(
           create: (context) => BPageController(),
-        )
+        ),
       ],
       child: const BPage._(),
     );
@@ -58,8 +56,9 @@ class BPage extends StatelessWidget {
             ElevatedButton(
               child: const Text('LOG LATEST NAVIGATION'),
               onPressed: () {
-                final route =
-                    RouteObserverProvider.of(context).navigation.valueOrNull;
+                final route = RouteObserverProvider.of(context)
+                    .navigation
+                    .valueOrNull;
                 context.read<Logger>().log('route: $route');
               },
             ),
@@ -70,8 +69,8 @@ class BPage extends StatelessWidget {
   }
 }
 
-class BPageController extends StateNotifier<BPageState> with LocatorMixin {
-  BPageController() : super(const BPageState());
+class BPageController() extends StateNotifier<BPageState> with LocatorMixin {
+  this : super(const BPageState());
 
   RouteAwareObserver get _routeAwareObserver => read();
   Logger get _logger => read();
@@ -90,9 +89,8 @@ class BPageController extends StateNotifier<BPageState> with LocatorMixin {
   }
 }
 
-class BPageState {
+class const BPageState([
+  final RouteAwareEvent event = RouteAwareEvent.didPush,
+]) {
   // `didPush` of [RouteAware] isn't supported, so set by hand initially.
-  const BPageState([this.event = RouteAwareEvent.didPush]);
-
-  final RouteAwareEvent event;
 }

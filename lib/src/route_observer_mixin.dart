@@ -4,16 +4,25 @@ import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 mixin RouteObserverMixin<T extends StatefulWidget> on State<T>, RouteAware {
   GlobalRouteObserver? _routeObserver;
+  ModalRoute<dynamic>? _route;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    _routeObserver?.unsubscribe(this);
     final route = ModalRoute.of(context);
-    if (route != null) {
-      _routeObserver = Provider.of<GlobalRouteObserver>(context, listen: false)
-        ..subscribe(this, route);
+    final routeObserver = route == null
+        ? null
+        : Provider.of<GlobalRouteObserver>(context, listen: false);
+    if (_routeObserver == routeObserver && _route == route) {
+      return;
+    }
+
+    _routeObserver?.unsubscribe(this);
+    _routeObserver = routeObserver;
+    _route = route;
+    if (routeObserver != null && route != null) {
+      routeObserver.subscribe(this, route);
     }
   }
 

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:route_observer_mixin/route_observer_mixin.dart';
 
@@ -14,7 +14,7 @@ void main() {
           // ignore: avoid_print
           create: (context) => GlobalRouteObserver()..navigation.listen(print),
         ),
-        ChangeNotifierProvider(create: (context) => Logger())
+        ChangeNotifierProvider(create: (context) => Logger()),
       ],
       child: const App(),
     ),
@@ -32,8 +32,7 @@ void main() {
   */
 }
 
-class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+class const App({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -1,20 +1,18 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 import '../log_view.dart';
 import 'b_page.dart';
 
-class APage extends StatefulWidget {
-  const APage({Key? key}) : super(key: key);
-
+class const APage({super.key}) extends StatefulWidget {
   @override
   State<APage> createState() => _APageState();
 }
 
 // 3. Add `with RouteAware, RouteObserverMixin` to State
 //    and override RouteAware methods.
-class _APageState extends State<APage> with RouteAware, RouteObserverMixin {
+class _APageState() extends State<APage> with RouteAware, RouteObserverMixin {
   Logger get _logger => Provider.of<Logger>(context, listen: false);
 
   @override

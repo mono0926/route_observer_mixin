@@ -3,23 +3,23 @@ description: An example app.
 version: 1.0.0+1
 publish_to: none
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ^3.14.0
+  flutter: ^3.50.0
 dependencies:
-  cupertino_icons:
-  enum_to_string:
+  cupertino_icons: ^2.0.0
+  enum_to_string: ^2.2.1
   flutter:
     sdk: flutter
-  flutter_riverpod: 2.3.0
-  flutter_state_notifier:
-  provider:
-  route_observer_mixin:
-  state_notifier:
-dependencies_override:
+  flutter_riverpod: ^3.5.0
+  flutter_state_notifier: ^1.0.0
+  material_ui: ^1.11.0
+  provider: ^6.1.5
   route_observer_mixin:
     path: ..
+  state_notifier: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic_mono:
+  pedantic_mono: ^1.39.0
 flutter:
   uses-material-design: true

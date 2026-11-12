@@ -7,22 +7,23 @@ final routeObserverProvider = riverpod.Provider<GlobalRouteObserver>(
   (ref) => GlobalRouteObserver(),
 );
 
-class RouteObserverProvider extends Provider<GlobalRouteObserver> {
-  RouteObserverProvider({
-    super.key,
-    Create<GlobalRouteObserver>? create,
-    super.child,
-  }) : super(
-          create: create ?? (context) => GlobalRouteObserver(),
-        );
+class RouteObserverProvider({
+  super.key,
+  Create<GlobalRouteObserver>? create,
+  super.child,
+}) extends Provider<GlobalRouteObserver> {
+  this
+    : super(
+        create: create ?? (context) => GlobalRouteObserver(),
+      );
 
   static GlobalRouteObserver of(BuildContext context) => Provider.of(
-        context,
-        listen: false,
-      );
+    context,
+    listen: false,
+  );
 }
 
-class GlobalRouteObserver extends RouteObserver<ModalRoute<dynamic>> {
+class GlobalRouteObserver() extends RouteObserver<ModalRoute<dynamic>> {
   BehaviorSubject<NavigationBehavior>? _navigation;
 
   ValueStream<NavigationBehavior> get navigation =>
@@ -104,7 +105,7 @@ class GlobalRouteObserver extends RouteObserver<ModalRoute<dynamic>> {
   }
 }
 
-enum NavigationBehaviorType {
+enum NavigationBehaviorType() {
   didPush,
   didPop,
   didRemove,
@@ -113,16 +114,11 @@ enum NavigationBehaviorType {
   didStopUserGesture,
 }
 
-class NavigationBehavior {
-  NavigationBehavior({
-    required this.type,
-    required this.route,
-    required this.previousRoute,
-  });
-  final NavigationBehaviorType type;
-  final Route<dynamic>? route;
-  final Route<dynamic>? previousRoute;
-
+class NavigationBehavior({
+  required final NavigationBehaviorType type,
+  required final Route<dynamic>? route,
+  required final Route<dynamic>? previousRoute,
+}) {
   @override
   String toString() {
     return 'GlobalRouteEvent{'
