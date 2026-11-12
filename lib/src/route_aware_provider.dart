@@ -6,15 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:route_observer_mixin/route_observer_mixin.dart';
 
-class const RouteAwareProvider({
-  super.key,
-  super.child,
-}) extends SingleChildStatelessWidget {
+class const RouteAwareProvider({super.key, super.child})
+    extends SingleChildStatelessWidget {
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
-    return _RouteAwareWidget(
-      child: child,
-    );
+    return _RouteAwareWidget(child: child);
   }
 
   /// Thin wrapper of Provider.of
@@ -22,21 +18,17 @@ class const RouteAwareProvider({
     try {
       return Provider.of<RouteAwareObserver>(context, listen: false);
     } catch (error) {
-      throw FlutterError(
-        '''
+      throw FlutterError('''
         RouteAwareProvider.of() called with a context that does not contain
         a Disposable of type RouteAwareObserver.
         The context used was: $context
         Error: $error
-        ''',
-      );
+        ''');
     }
   }
 }
 
-class const _RouteAwareWidget({
-  super.child,
-}) extends SingleChildStatefulWidget {
+class const _RouteAwareWidget({super.child}) extends SingleChildStatefulWidget {
   @override
   _RouteAwareWidgetState createState() => _RouteAwareWidgetState();
 }
@@ -48,10 +40,7 @@ class _RouteAwareWidgetState()
 
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
-    return Provider.value(
-      value: _observer,
-      child: child,
-    );
+    return Provider.value(value: _observer, child: child);
   }
 
   @override
