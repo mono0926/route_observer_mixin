@@ -6,12 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:route_observer_mixin/route_observer_mixin.dart';
 
-class RouteAwareProvider extends SingleChildStatelessWidget {
-  const RouteAwareProvider({
-    super.key,
-    super.child,
-  });
-
+class const RouteAwareProvider({
+  super.key,
+  super.child,
+}) extends SingleChildStatelessWidget {
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
     return _RouteAwareWidget(
@@ -36,15 +34,15 @@ class RouteAwareProvider extends SingleChildStatelessWidget {
   }
 }
 
-class _RouteAwareWidget extends SingleChildStatefulWidget {
-  const _RouteAwareWidget({
-    super.child,
-  });
+class const _RouteAwareWidget({
+  super.child,
+}) extends SingleChildStatefulWidget {
   @override
   _RouteAwareWidgetState createState() => _RouteAwareWidgetState();
 }
 
-class _RouteAwareWidgetState extends SingleChildState<_RouteAwareWidget>
+class _RouteAwareWidgetState()
+    extends SingleChildState<_RouteAwareWidget>
     with RouteAware, RouteObserverMixin {
   final _observer = RouteAwareObserver();
 
@@ -79,7 +77,7 @@ class _RouteAwareWidgetState extends SingleChildState<_RouteAwareWidget>
   void didPush() => _observer._streamController.add(RouteAwareEvent.didPush);
 }
 
-class RouteAwareObserver with Disposable {
+class RouteAwareObserver() implements Disposable {
   final _streamController = StreamController<RouteAwareEvent>.broadcast();
 
   Stream<RouteAwareEvent> get stream => _streamController.stream;
@@ -91,7 +89,7 @@ class RouteAwareObserver with Disposable {
 }
 
 /// `didPush` of [RouteAware] isn't supported.
-enum RouteAwareEvent {
+enum RouteAwareEvent() {
   didPushNext,
   didPop,
   didPopNext,

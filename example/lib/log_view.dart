@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
-class LogView extends StatelessWidget {
-  const LogView({Key? key}) : super(key: key);
+class const LogView({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final logger = Provider.of<Logger>(context);
@@ -10,18 +9,20 @@ class LogView extends StatelessWidget {
     return WidgetsApp(
       debugShowCheckedModeBanner: false,
       color: color,
-      builder: (_, __) => ColoredBox(
+      builder: (_, _) => ColoredBox(
         color: color,
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: logger.logs.reversed
-              .map((log) => Text(
-                    log,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ))
+              .map(
+                (log) => Text(
+                  log,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
+              )
               .toList(),
         ),
       ),
@@ -29,7 +30,7 @@ class LogView extends StatelessWidget {
   }
 }
 
-class Logger extends ChangeNotifier {
+class Logger() extends ChangeNotifier {
   final _logs = <String>[];
 
   List<String> get logs => _logs;
