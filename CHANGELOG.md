@@ -1,3 +1,14 @@
+## 1.9.0 - 2026-11-12
+
+### Features
+- Upgrade SDK requirements to Dart `^3.14.0` and Flutter `>=3.50.0`
+- Upgrade `disposable_provider` to `^2.5.0`, `provider` to `^6.1.5`, `riverpod` to `^3.5.0`, and `rxdart` to `^0.28.0`
+- Migrate example app to `material_ui`
+
+### Bug Fixes
+- Avoid spurious `didPush` re-invocation in `RouteObserverMixin.didChangeDependencies` when neither `ModalRoute` nor `GlobalRouteObserver` has changed
+- Update `RouteAwareObserver` to `implements Disposable` for Dart 3 class modifier compatibility
+
 ## 1.8.2 - 2026-10-20
 
 ### Bug Fixes
